@@ -21,5 +21,6 @@ namespace FrameworkWorkShop.DataAccess.Concrete.EntityFramework
             modelBuilder.Configurations.Add(new ProductMap());
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
