@@ -10,9 +10,10 @@ namespace FrameworkWorkShop.Core.CrossCuttingConcerns.Validation.FluentValidatio
 {
     public class ValidatorTool
     {
-        public static void FluentValidate<TEntity>(IValidator<TEntity> validator,TEntity entity) where TEntity :  IEntity
+        public static void FluentValidate(IValidator validator, object entity)
         {
-            var result = validator.Validate(entity);
+            var context = new ValidationContext<object>(entity);
+            var result = validator.Validate(context);
 
             if (!result.IsValid)
             {

@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{19921B35-1DF3-48DB-8375-79665702EC83}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FrameworkWorkShop.ConsoleTest</RootNamespace>
+    <AssemblyName>FrameworkWorkShop.ConsoleTest</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.9.5.1\lib\net461\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FrameworkWorkShop.Business\FrameworkWorkShop.Business.csproj">
+      <Project>{966dc29e-3b74-4990-8258-5faff02546d5}</Project>
+      <Name>FrameworkWorkShop.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkWorkShop.Core\FrameworkWorkShop.Core.csproj">
+      <Project>{59db747a-ca7c-428a-b917-9c5a9e77fdc4}</Project>
+      <Name>FrameworkWorkShop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkWorkShop.DataAccess\FrameworkWorkShop.DataAccess.csproj">
+      <Project>{dfd967b3-a1d6-49ec-a447-bfcf043caa08}</Project>
+      <Name>FrameworkWorkShop.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrameworkWorkShop.Entities\FrameworkWorkShop.Entities.csproj">
+      <Project>{047611c6-d0d4-42a2-8273-6f555c3dcb64}</Project>
+      <Name>FrameworkWorkShop.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

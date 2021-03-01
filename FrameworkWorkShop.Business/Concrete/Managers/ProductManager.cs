@@ -4,6 +4,9 @@ using FrameworkWorkShop.DataAccess.Abstract;
 using FrameworkWorkShop.Entities.Concrete;
 using FrameworkWorkShop.Core.Aspects.PostSharp;
 using System.Collections.Generic;
+using FluentValidation;
+using System;
+using FrameworkWorkShop.Core.Entities;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
@@ -18,6 +21,7 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         [FluentValidationAspect(typeof(ProductValidator))]
         public Product Add(Product product)
         {
+            IValidator<Product> xc = (IValidator<IEntity>)Activator.CreateInstance(typeof(ProductValidator));
             return _productdal.Add(product);
         }
 
