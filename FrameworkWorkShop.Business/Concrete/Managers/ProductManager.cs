@@ -19,9 +19,13 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         private IProductDal _productdal;
         private readonly IQueryableRepository<Product> _queryable;
 
-        public ProductManager(IProductDal prodcutDal, IQueryableRepository<Product> queryable)
+        public ProductManager(IProductDal prodcutDal)
         {
             _productdal = prodcutDal;
+        }
+
+        public ProductManager(IQueryableRepository<Product> queryable)
+        {
             _queryable = queryable;
         }
 
