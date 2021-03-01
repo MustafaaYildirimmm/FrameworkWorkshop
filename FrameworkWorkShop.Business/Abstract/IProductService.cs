@@ -13,5 +13,7 @@ namespace FrameworkWorkShop.Business.Abstract
         Product GetById(int id);
         Product Add(Product product);
         Product Update(Product product);
+        void TansactionalOperation(Product abc,Product xyz);
+
     }
 }

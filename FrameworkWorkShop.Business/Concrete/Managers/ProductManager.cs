@@ -7,15 +7,22 @@ using System.Collections.Generic;
 using FluentValidation;
 using System;
 using FrameworkWorkShop.Core.Entities;
+using FrameworkWorkShop.Core.DataAccess;
+using System.Linq;
+using System.Transactions;
+using FrameworkWorkShop.Core.Aspects.PostSharp.TransactionAspects;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
     public class ProductManager : IProductService
     {
         private IProductDal _productdal;
-        public ProductManager(IProductDal prodcutDal)
+        private readonly IQueryableRepository<Product> _queryable;
+
+        public ProductManager(IProductDal prodcutDal, IQueryableRepository<Product> queryable)
         {
             _productdal = prodcutDal;
+            _queryable = queryable;
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
@@ -27,6 +34,7 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
 
         public List<Product> GetAll()
         {
+            //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
             return _productdal.GetList();
         }
 
@@ -39,6 +47,15 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         public Product Update(Product product)
         {
             return _productdal.Update(product);
+        }
+
+        [TransactionScopeAspect]
+        public void TansactionalOperation(Product abc, Product xyz)
+        {
+            _productdal.Add(abc);
+            //business codes
+            _productdal.Update(xyz);
+
         }
     }
 }
