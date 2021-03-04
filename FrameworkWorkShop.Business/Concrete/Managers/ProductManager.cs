@@ -28,10 +28,10 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
             _productdal = prodcutDal;
         }
 
-        public ProductManager(IQueryableRepository<Product> queryable)
-        {
-            _queryable = queryable;
-        }
+        //public ProductManager(IQueryableRepository<Product> queryable)
+        //{
+        //    _queryable = queryable;
+        //}
 
         [FluentValidationAspect(typeof(ProductValidator))]
         [CacheRemoveAspect(typeof(MemoryCacheManager))]

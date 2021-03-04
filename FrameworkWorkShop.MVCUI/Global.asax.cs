@@ -1,3 +1,5 @@
+using FrameworkWorkShop.Business.DependencyResolvers.Ninject;
+using FrameworkWorkShop.Core.Utilities.Mvc.Infrastructer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,8 @@ namespace FrameworkWorkShop.MVCUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new BusinessModule()));
         }
     }
 }
