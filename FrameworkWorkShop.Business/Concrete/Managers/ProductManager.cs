@@ -11,6 +11,8 @@ using FrameworkWorkShop.Core.DataAccess;
 using System.Linq;
 using System.Transactions;
 using FrameworkWorkShop.Core.Aspects.PostSharp.TransactionAspects;
+using FrameworkWorkShop.Core.Aspects.PostSharp.CacheAspects;
+using FrameworkWorkShop.Core.CrossCuttingConcerns.Caching.Microsoft;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
@@ -30,12 +32,14 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         }
 
         [FluentValidationAspect(typeof(ProductValidator))]
+        [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public Product Add(Product product)
         {
             IValidator<Product> xc = (IValidator<IEntity>)Activator.CreateInstance(typeof(ProductValidator));
             return _productdal.Add(product);
         }
 
+        [CacheAspect(typeof(MemoryCacheManager),120)]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
