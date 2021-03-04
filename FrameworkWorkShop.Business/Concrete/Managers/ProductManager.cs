@@ -13,6 +13,8 @@ using System.Transactions;
 using FrameworkWorkShop.Core.Aspects.PostSharp.TransactionAspects;
 using FrameworkWorkShop.Core.Aspects.PostSharp.CacheAspects;
 using FrameworkWorkShop.Core.CrossCuttingConcerns.Caching.Microsoft;
+using FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net;
+using FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
@@ -40,6 +42,8 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         }
 
         [CacheAspect(typeof(MemoryCacheManager),120)]
+        [LogAspect(typeof(DatabaseLogger))]
+        [LogAspect(typeof(FileLogger))]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
