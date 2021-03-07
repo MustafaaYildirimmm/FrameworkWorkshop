@@ -34,10 +34,10 @@ namespace FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects
 
         public override void OnEntry(MethodExecutionArgs args) 
         {
-            if (!_loggerService.IsInfoEnabled) return;
-
+          
             try
             {
+                if (!_loggerService.IsInfoEnabled) return;
                 var logParamters = args.Method.GetParameters().Select((type, iterator) => new LogParameter
                 {
                     Name = type.Name,

@@ -36,5 +36,27 @@ namespace FrameworkWorkShop.MVCUI.Controllers
             });
             return View("Product Added");
         }
+
+        public string AddUpdate()
+        {
+            _productService.TransactionalOperation(
+            new Product()
+            {
+                ProductName = "gsm",
+                QuantityPerUnit = "25",
+                UnitPrice = 2,
+                CategoryId = 1
+            },
+            new Product()
+            {
+                ProductName = "computer",
+                QuantityPerUnit = "24",
+                UnitPrice = 30,
+                CategoryId = 1,
+                ProductId=2
+            });
+
+            return "Do It!";
+        }
     }
 }

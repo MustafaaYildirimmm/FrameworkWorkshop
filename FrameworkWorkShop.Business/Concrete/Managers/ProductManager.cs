@@ -15,6 +15,7 @@ using FrameworkWorkShop.Core.Aspects.PostSharp.CacheAspects;
 using FrameworkWorkShop.Core.CrossCuttingConcerns.Caching.Microsoft;
 using FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net;
 using FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects;
+using FrameworkWorkShop.Core.Aspects.PostSharp.ExceptionAspects;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
@@ -59,7 +60,8 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         }
 
         [TransactionScopeAspect]
-        public void TansactionalOperation(Product abc, Product xyz)
+        [FluentValidationAspect(typeof(ProductValidator))]
+        public void TransactionalOperation(Product abc, Product xyz)
         {
             _productdal.Add(abc);
             //business codes
