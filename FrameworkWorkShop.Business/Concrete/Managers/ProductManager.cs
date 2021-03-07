@@ -37,13 +37,10 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public Product Add(Product product)
         {
-            IValidator<Product> xc = (IValidator<IEntity>)Activator.CreateInstance(typeof(ProductValidator));
             return _productdal.Add(product);
         }
 
         [CacheAspect(typeof(MemoryCacheManager),120)]
-        [LogAspect(typeof(DatabaseLogger))]
-        [LogAspect(typeof(FileLogger))]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();

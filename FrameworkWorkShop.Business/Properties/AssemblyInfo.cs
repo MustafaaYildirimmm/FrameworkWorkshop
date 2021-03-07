@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects;
+using FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -13,7 +15,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
-
+[assembly: LogAspect(typeof(FileLogger), AttributeTargetTypes = "FrameworkWorkShop.Business.Concrete.Managers.*")]
+[assembly: LogAspect(typeof(DatabaseLogger),AttributeTargetTypes = "FrameworkWorkShop.Business.Concrete.Managers.*")]
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.

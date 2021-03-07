@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net
+namespace FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net.Layouts
 {
     public class JsonLayout : LayoutSkeleton
     {
