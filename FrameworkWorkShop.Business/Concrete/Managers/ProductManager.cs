@@ -16,6 +16,8 @@ using FrameworkWorkShop.Core.CrossCuttingConcerns.Caching.Microsoft;
 using FrameworkWorkShop.Core.CrossCuttingConcerns.Logging.Log4Net;
 using FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects;
 using FrameworkWorkShop.Core.Aspects.PostSharp.ExceptionAspects;
+using FrameworkWorkShop.Core.Aspects.PostSharp.PerformanceAspects;
+using System.Threading;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
@@ -38,13 +40,16 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
         [CacheRemoveAspect(typeof(MemoryCacheManager))]
         public Product Add(Product product)
         {
+          
             return _productdal.Add(product);
         }
 
         [CacheAspect(typeof(MemoryCacheManager),120)]
+        [PerformanceCounterAspect(2)]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
+            Thread.Sleep(3000);
             return _productdal.GetList();
         }
 
