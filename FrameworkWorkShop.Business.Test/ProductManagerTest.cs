@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using FrameworkWorkShop.Business.Concrete.Managers;
 using FrameworkWorkShop.DataAccess.Abstract;
 using FrameworkWorkShop.Entities.Concrete;
@@ -16,7 +17,8 @@ namespace FrameworkWorkShop.Business.Test
         public void Product_Validation_Check()
         {
             Mock<IProductDal> mock = new Mock<IProductDal>();
-            ProductManager productManager = new ProductManager(mock.Object);
+            Mock<IMapper> mockMapper = new Mock<IMapper>();
+            ProductManager productManager = new ProductManager(mock.Object, mockMapper.Object);
 
             productManager.Add(new Product());
 

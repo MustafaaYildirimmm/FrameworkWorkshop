@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FrameworkWorkShop.Business.Abstract;
+using FrameworkWorkShop.Business.DependencyResolvers.Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
@@ -12,6 +14,7 @@ namespace FrameworkWorkShop.WebAPI.MessageHandlers
 {
     public class AuthenticationHandler : DelegatingHandler
     {
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             try
@@ -23,9 +26,13 @@ namespace FrameworkWorkShop.WebAPI.MessageHandlers
                     string decodedStr = Encoding.UTF8.GetString(data);
                     string[] tokenValues = decodedStr.Split(':');
 
-                    if (tokenValues[0] =="mustafa" && tokenValues[1]=="12345")
+                    IUserService userService = InstanceFactory.GetInstance<IUserService>();
+
+
+                    var user = userService.GetByUserNameAndPassword(tokenValues[0], tokenValues[1]);
+                    if (user != null)
                     {
-                        IPrincipal principal = new GenericPrincipal(new GenericIdentity(tokenValues[0]), new[] { "Admin" });
+                        IPrincipal principal = new GenericPrincipal(new GenericIdentity(tokenValues[0]), userService.GetUserRoles(user).Select(t=> t.RoleName).ToArray());
                         Thread.CurrentPrincipal = principal;
                         HttpContext.Current.User = principal;
                     }
