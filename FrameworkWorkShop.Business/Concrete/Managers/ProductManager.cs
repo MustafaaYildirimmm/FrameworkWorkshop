@@ -18,17 +18,21 @@ using FrameworkWorkShop.Core.Aspects.PostSharp.LogAspects;
 using FrameworkWorkShop.Core.Aspects.PostSharp.ExceptionAspects;
 using FrameworkWorkShop.Core.Aspects.PostSharp.PerformanceAspects;
 using System.Threading;
+using FrameworkWorkShop.Core.Utilities.Mapping;
+using AutoMapper;
 
 namespace FrameworkWorkShop.Business.Concrete.Managers
 {
     public class ProductManager : IProductService
     {
         private IProductDal _productdal;
+        private readonly IMapper _mapper;
         private readonly IQueryableRepository<Product> _queryable;
 
-        public ProductManager(IProductDal prodcutDal)
+        public ProductManager(IProductDal prodcutDal,IMapper mapper)
         {
             _productdal = prodcutDal;
+            _mapper = mapper;
         }
 
         //public ProductManager(IQueryableRepository<Product> queryable)
@@ -44,13 +48,14 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
             return _productdal.Add(product);
         }
 
-        [CacheAspect(typeof(MemoryCacheManager),120)]
+        [CacheAspect(typeof(MemoryCacheManager),120)] 
         [PerformanceCounterAspect(2)]
-        [SecuredOperation(Roles="Admin")]
+        [SecuredOperation(Roles="Admin,Editor,Student")]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
-            return _productdal.GetList();
+            var products = _mapper.Map<List<Product>>(_productdal.GetList());
+            return products;
         }
 
         public Product GetById(int id)

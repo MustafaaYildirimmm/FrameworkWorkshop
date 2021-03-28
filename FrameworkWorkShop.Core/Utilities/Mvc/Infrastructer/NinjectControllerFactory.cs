@@ -13,7 +13,7 @@ namespace FrameworkWorkShop.Core.Utilities.Mvc.Infrastructer
     public class NinjectControllerFactory : DefaultControllerFactory
     {
         private IKernel _kernel;
-        public NinjectControllerFactory(INinjectModule module)
+        public NinjectControllerFactory(params INinjectModule[] module)
         {
             _kernel = new StandardKernel(module);
         }
