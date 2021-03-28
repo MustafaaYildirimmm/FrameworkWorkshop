@@ -46,10 +46,10 @@ namespace FrameworkWorkShop.Business.Concrete.Managers
 
         [CacheAspect(typeof(MemoryCacheManager),120)]
         [PerformanceCounterAspect(2)]
+        [SecuredOperation(Roles="Admin")]
         public List<Product> GetAll()
         {
             //_queryable.Table.Where(t => t.CategoryId == 1).ToList();
-            Thread.Sleep(3000);
             return _productdal.GetList();
         }
 

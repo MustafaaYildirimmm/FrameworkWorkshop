@@ -109,6 +109,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aspects\PostSharp\AuthoricationAspects\SecuredOperation.cs" />
     <Compile Include="Aspects\PostSharp\CacheAspects\CacheAspect.cs" />
     <Compile Include="Aspects\PostSharp\CacheAspects\CacheRemoveAspect.cs" />
     <Compile Include="Aspects\PostSharp\ExceptionAspects\ExceptionLogAspect.cs" />
@@ -125,6 +126,9 @@
     <Compile Include="CrossCuttingConcerns\Logging\Log4Net\SerializableLogEvent.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\LogDetail.cs" />
     <Compile Include="CrossCuttingConcerns\Logging\LogParameter.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Identity.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\AuthenticationHelper.cs" />
+    <Compile Include="CrossCuttingConcerns\Security\Web\SecurityUtilities.cs" />
     <Compile Include="CrossCuttingConcerns\Validation\FluentValidation\ValidatorTool.cs" />
     <Compile Include="DataAccess\EntityFramework\EfQueryableRepository.cs" />
     <Compile Include="DataAccess\IEntityRepository.cs" />
