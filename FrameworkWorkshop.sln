@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3E84CF0D-5D6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkWorkShop.ConsoleTest", "FrameworkWorkShop.ConsoleTest\FrameworkWorkShop.ConsoleTest.csproj", "{19921B35-1DF3-48DB-8375-79665702EC83}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrameworkWorkShop.MVCAngularrUI", "FrameworkWorkShop.MVCAngularrUI\FrameworkWorkShop.MVCAngularrUI.csproj", "{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{19921B35-1DF3-48DB-8375-79665702EC83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19921B35-1DF3-48DB-8375-79665702EC83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19921B35-1DF3-48DB-8375-79665702EC83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{D00DD829-D947-4D18-8455-FE745C2580A0} = {2B5A88F9-7B9A-4A14-ABFA-61060A6298DC}
 		{3377A1D0-B905-448B-9D44-D10DA0E1E6FD} = {2B5A88F9-7B9A-4A14-ABFA-61060A6298DC}
 		{19921B35-1DF3-48DB-8375-79665702EC83} = {2B5A88F9-7B9A-4A14-ABFA-61060A6298DC}
+		{99BD96CC-AB01-492F-B6A2-62EFFB6D00B7} = {3E84CF0D-5D62-46E6-85C1-AD0B19CFA874}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3B2D2291-DC02-48F0-A5EC-AF8BA6FDC0F8}
